@@ -1,7 +1,0 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse
-
-data = {} 
-
-def index(request):
-    return render(request, "portfolio_html.html")
