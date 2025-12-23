@@ -108,6 +108,7 @@
                 <p>{{qual.Branch}}</p>
                 <p class="duration">{{qual.Year}}</p>
             </div>
+
         {% endfor %}
         
     </section>
@@ -118,116 +119,27 @@
             <h2 class="section-title">Featured Projects</h2>
         </div>
         <div class="projects-grid">
+            {% for value in projects %}
             
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3>Renewable Energy Monitoring System</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.3rem;">Smart India Hackathon Project</p>
-                    </div>
-                    <span class="project-badge">Featured</span>
-                </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">ESP32</span>
-                    <span class="tech-tag">IoT Sensors</span>
-                    <span class="tech-tag">Web Dashboard</span>
-                    <span class="tech-tag">HTML/CSS/JS</span>
-                    <span class="tech-tag">Cloud Integration</span>
-                </div>
-                <p class="project-description">An IoT-based solution developed for monitoring solar and wind microgrids in rural areas. The system provides real-time insights into energy generation, storage, and consumption, enabling better decision-making and efficient energy management at the community level.</p>
-                <ul class="project-features">
-                    <li>Real-time monitoring of solar and wind energy systems</li>
-                    <li>Live IoT dashboard for data visualization</li>
-                    <li>Alerts for inefficiencies and maintenance requirements</li>
-                    <li>Designed to improve microgrid efficiency by up to 15%</li>
-                </ul>
-                <p class="project-team"><strong>Team:</strong> Saurabh Yadav (Lead), Radhika Gupta, Deebu Gangwar, Vikas Kumar, Sachin Saxena, Arpit Gangwar</p>
-            </div>
+                <div class="project-card">
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3>Smart Air Quality Monitoring System</h3>
+                    <div class="project-header">
+                        <div><h3>{{value.project_title}}</h3></div>
+                        {% if value.featured %}<span class="project-badge">Featured</span>{% endif %}
                     </div>
-                </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">ESP32</span>
-                    <span class="tech-tag">DHT11</span>
-                    <span class="tech-tag">SGP30</span>
-                    <span class="tech-tag">MQ Sensors</span>
-                    <span class="tech-tag">ThingsBoard</span>
-                </div>
-                <p class="project-description">A real-time air quality monitoring system that measures temperature, humidity, CO₂, VOCs, and harmful gases. Sensor data is processed by ESP32 and visualized on a cloud dashboard.</p>
-                <ul class="project-features">
-                    <li>Real-time environmental monitoring</li>
-                    <li>Cloud-based data visualization</li>
-                    <li>OLED display for local output</li>
-                    <li>IoT dashboard integration</li>
-                </ul>
-            </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3>Water Tank Level Monitoring & Control</h3>
+                    <div class="tech-tags">
+                        {% for tech in value.technologies %}<span class="tech-tag">{{tech}}</span>{% endfor %}
                     </div>
-                </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">ESP32</span>
-                    <span class="tech-tag">Ultrasonic Sensor</span>
-                    <span class="tech-tag">Relays</span>
-                    <span class="tech-tag">Google Sheets</span>
-                    <span class="tech-tag">ThingsBoard</span>
-                </div>
-                <p class="project-description">An IoT-based system to monitor water tank levels, calculate daily water consumption, and control a water motor both manually and remotely.</p>
-                <ul class="project-features">
-                    <li>Live tank level & consumption tracking</li>
-                    <li>Automatic and manual motor control</li>
-                    <li>Google Sheets integration for data logging</li>
-                    <li>Cloud monitoring via ThingsBoard</li>
-                </ul>
-            </div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3>Student Portfolio Website</h3>
-                    </div>
-                </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">HTML/CSS</span>
-                    <span class="tech-tag">Python</span>
-                </div>
-                <p class="project-description">A personal portfolio website built using Django to showcase skills, projects, and learning journey with dynamic content management.</p>
-                <ul class="project-features">
-                    <li>Dynamic content management</li>
-                    <li>Clean UI & responsive design</li>
-                    <li>Django backend integration</li>
-                    <li>Project and skill showcase</li>
-                </ul>
-            </div>
+                    <p class="project-description">{{value.short_description}}</p>
+                
+                    <ul class="project-features">
+                        {% for point in value.points %}<li>{{point}}</li>{% endfor %}
+                    </ul>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3>Login System with To-Do List</h3>
-                    </div>
                 </div>
-                <div class="tech-tags">
-                    <span class="tech-tag">C</span>
-                    <span class="tech-tag">File Handling</span>
-                    <span class="tech-tag">Windows API</span>
-                </div>
-                <p class="project-description">A console-based login system with credential storage and a personalized to-do list for each user.</p>
-                <ul class="project-features">
-                    <li>Secure login using file handling</li>
-                    <li>User-specific task management</li>
-                    <li>Text-based data storage</li>
-                    <li>Modular program structure</li>
-                </ul>
-            </div>
-
+            {% endfor %}
         </div>
     </section>
 
