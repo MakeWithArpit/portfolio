@@ -100,12 +100,16 @@
             <div class="section-tag">Education</div>
             <h2 class="section-title">Academic Background</h2>
         </div>
-        <div class="education-card">
-            <h3>Bachelor of Technology</h3>
-            <p class="university">Invertis University</p>
-            <p>Computer Science and Engineering</p>
-            <p class="duration">2024 - 2028</p>
-        </div>
+        {% for qual in qualifications %}
+
+            <div class="education-card">
+                <h3>{{qual.Degree}}</h3>
+                <p class="university">{{qual.Institution}}</p>
+                <p>{{qual.Branch}}</p>
+                <p class="duration">{{qual.Year}}</p>
+            </div>
+        {% endfor %}
+        
     </section>
 
     <section class="container" id="projects">
