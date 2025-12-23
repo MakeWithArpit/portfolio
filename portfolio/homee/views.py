@@ -49,4 +49,23 @@ def home(request):
         data['number_of_certifications'] = str(number_of_certifications)
 
     data['starting_year'] = str(starting_year)
+
+    # Skills list
+
+    data["skills"] = [
+        {"name": "Python", "icon": "fab fa-python"},
+        {"name": "C Language", "icon": "fas fa-code"},
+        {"name": "Django", "icon": "fas fa-server"},
+        {"name": "ESP32/ESP8266", "icon": "fas fa-microchip"},
+        {"name": "HTML/CSS", "icon": "fab fa-html5"},
+        {"name": "JavaScript", "icon": "fab fa-js"},
+        {"name": "IoT Systems", "icon": "fas fa-network-wired"},
+        {"name": "Data Analysis", "icon": "fas fa-database"},
+        {"name": "Git/GitHub", "icon": "fab fa-git-alt"}
+    ]
+
+    # Academic qualifications
+    data["qualifications"] = [
+        {"Degree": "Bachelor of Technology", "Institution": "Invertis University, Bareilly", "Year": "2022 - 2028", "Branch": "Computer Science and Engineering (CSE)"},
+    ]
     return render(request, "portfolio_html.html", data)

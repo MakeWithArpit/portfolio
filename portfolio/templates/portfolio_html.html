@@ -85,38 +85,13 @@
             <h2 class="section-title">What I Work With</h2>
         </div>
         <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fab fa-python"></i>
-                <h3>Python</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-code"></i>
-                <h3>C Language</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-server"></i>
-                <h3>Django</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-microchip"></i>
-                <h3>ESP32/ESP8266</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-html5"></i>
-                <h3>HTML/CSS</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-js"></i>
-                <h3>JavaScript</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-network-wired"></i>
-                <h3>IoT Systems</h3>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-database"></i>
-                <h3>Data Analysis</h3>
-            </div>
+
+            {% for k in skills%}
+                <div class="skill-card">
+                    <i class= "{{k.icon}}"></i>
+                    <h3>{{k.name}}</h3>
+                </div>
+            {% endfor %}
         </div>
     </section>
 
