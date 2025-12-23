@@ -183,4 +183,12 @@ def home(request):
         },
     ]
 
+    # Contacet information
+    data['contact'] = [
+        {"name" :"arpit.gangwar061@gmail.com", "link":"https://mail.google.com/mail/?view=cm&fs=1&to=arpit.gangwar061@gmail.com", "icon":"fas fa-envelope"},
+        {"name" :"github.com/MakeWithArpit", "link":"https://github.com/MakeWithArpit", "icon":"fab fa-github"},
+        {"name" :"linkedin.com/in/arpit-gangwar", "link":"https://www.linkedin.com/in/arpit-gangwar", "icon":"fab fa-linkedin"},
+        {"name" :"youtube.com/@arpitgangwar-0.1", "link":"https://www.youtube.com/@arpitgangwar-0.1", "icon":"fab fa-youtube"},
+    ]
+
     return render(request, "portfolio_html.html", data)

@@ -175,28 +175,17 @@
             <div class="section-tag">Get In Touch</div>
             <h2 class="section-title">Let's Connect</h2>
         </div>
+
         <div class="contact-content">
             <h3>Ready to collaborate?</h3>
             <p>Feel free to reach out for collaborations, projects, or just a friendly chat about technology.</p>
             <div class="contact-links">
-
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arpit.gangwar061@gmail.com">arpit.gangwar061@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/MakeWithArpit" target="_blank">github.com/MakeWithArpit</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/arpit-gangwar" target="_blank">linkedin.com/in/arpit-gangwar</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-youtube"></i>
-                    <a href="https://www.youtube.com/@arpitgangwar-0.1" target="_blank">youtube.com/@arpitgangwar-0.1</a>
-                </div>
-                
+                {% for value in contact %}
+                    <div class="contact-item">
+                        <i class="{{value.icon}}"></i>
+                        <a href={{value.link}} target="_blank">{{value.name}}</a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>
