@@ -6,6 +6,9 @@ data = {}
 def home(request):
     # Page title
     data['title'] = "Arpit Gangwar - Portfolio"
+
+    # Profile photo
+    data['profile_image'] = "static/photo.jpg"
     
     # Short description for hero section
     data['short_description'] = """Tech enthusiast building practical solutions with IoT, Python, and Django. Transforming ideas into real-world applications."""
@@ -15,8 +18,6 @@ def home(request):
     data['linkedin_url'] = "https://www.linkedin.com/in/arpit-gangwar"
     data['youtube_url'] = "https://www.youtube.com/@arpitgangwar-0.1"
     data['email'] = "arpit.gangwar061@gmail.com"
-
-    data['profile_image'] = "https://i.ibb.co/ymffYc9Q/Photo.jpg"
 
     # Long description split into paragraphs
     data['para1'] = "Hello! I'm Arpit Gangwar, a tech enthusiast and student who loves learning by building. I have hands-on experience in C, Python, Django, and IoT projects using ESP32 and ESP8266 microcontrollers."
@@ -51,7 +52,6 @@ def home(request):
     data['starting_year'] = str(starting_year)
 
     # Skills list
-
     data["skills"] = [
         {"name": "Python", "icon": "fab fa-python"},
         {"name": "C Language", "icon": "fas fa-code"},
@@ -157,7 +157,30 @@ def home(request):
                 "Modular program structure."
             ]
         },
-
-
     ]
+
+    # Certifications list
+    data["certifications"] = [
+        {"cert_title": "Virtual Internship on Industrial Automation",
+         "cert_image": "static/Certificate_1.jpg",
+         "issued_by": "AICTE-EduSkills",
+         "issue_date": "December 2025",
+        },
+        {"cert_title": "Python for Data Science, AI & Development",
+         "cert_image": "static/Certificate_2.jpg",
+         "issued_by": "IBM",
+         "issue_date": "April 2025",
+        },
+        {"cert_title": "Crash Course on Python",
+         "cert_image": "static/Certificate_3.jpg",
+         "issued_by": "Google",
+         "issue_date": "February 2025",
+        },
+        {"cert_title": "Course on Computer Concepts",
+         "cert_image": "static/Certificate_4.jpg",
+         "issued_by": "NIELIT",
+         "issue_date": "December 2020",
+        },
+    ]
+
     return render(request, "portfolio_html.html", data)

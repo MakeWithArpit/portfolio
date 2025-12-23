@@ -148,52 +148,20 @@
             <div class="section-tag">Achievements</div>
             <h2 class="section-title">Certifications</h2>
         </div>
+        
         <div class="certificates-grid">
-            
-            <div class="cert-card" onclick="openModal('https://i.ibb.co/7dm7CV7X/Certificate-4.jpg')">
-                <div class="cert-image-wrapper">
-                    <img src="https://i.ibb.co/7dm7CV7X/Certificate-4.jpg" alt="NIELIT Certificate" class="cert-image">
+            {% for value in certifications %}
+                <div class="cert-card" onclick="openModal('{{value.cert_image}}')">
+                    <div class="cert-image-wrapper">
+                        <img src="{{value.cert_image}}" alt="{{value.issued_by}}" class="cert-image">
+                    </div>
+                    <div class="cert-content">
+                        <h3>{{value.cert_title}}</h3>
+                        <p class="cert-issuer">{{value.issued_by}}</p>
+                        <p class="cert-date">{{value.issue_date}}</p>
+                    </div>
                 </div>
-                <div class="cert-content">
-                    <h3>Course on Computer Concepts</h3>
-                    <p class="cert-issuer">NIELIT</p>
-                    <p class="cert-date">December 2020</p>
-                </div>
-            </div>
-
-            <div class="cert-card" onclick="openModal('https://i.ibb.co/pBZnC0BK/Certificate-3.png')">
-                <div class="cert-image-wrapper">
-                    <img src="https://i.ibb.co/pBZnC0BK/Certificate-3.png" alt="Google Certificate" class="cert-image">
-                </div>
-                <div class="cert-content">
-                    <h3>Crash Course on Python</h3>
-                    <p class="cert-issuer">Google</p>
-                    <p class="cert-date">February 2025</p>
-                </div>
-            </div>
-
-            <div class="cert-card" onclick="openModal('https://i.ibb.co/RGM6nZbk/Certificate-2.png')">
-                <div class="cert-image-wrapper">
-                    <img src="https://i.ibb.co/RGM6nZbk/Certificate-2.png" alt="IBM Certificate" class="cert-image">
-                </div>
-                <div class="cert-content">
-                    <h3>Python for Data Science, AI & Development</h3>
-                    <p class="cert-issuer">IBM</p>
-                    <p class="cert-date">April 2025</p>
-                </div>
-            </div>
-
-            <div class="cert-card" onclick="openModal('https://i.ibb.co/Wv7MnfZG/Certificate-1.png')">
-                <div class="cert-image-wrapper">
-                    <img src="https://i.ibb.co/Wv7MnfZG/Certificate-1.png" alt="Industrial Automation Certificate" class="cert-image">
-                </div>
-                <div class="cert-content">
-                    <h3>Virtual Internship on Industrial Automation</h3>
-                    <p class="cert-issuer">Invertis University</p>
-                    <p class="cert-date">December 2024</p>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
     </section>
 
@@ -211,9 +179,10 @@
             <h3>Ready to collaborate?</h3>
             <p>Feel free to reach out for collaborations, projects, or just a friendly chat about technology.</p>
             <div class="contact-links">
+
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:arpit.gangwar061@gmail.com">arpit.gangwar061@gmail.com</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arpit.gangwar061@gmail.com">arpit.gangwar061@gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-github"></i>
@@ -227,6 +196,7 @@
                     <i class="fab fa-youtube"></i>
                     <a href="https://www.youtube.com/@arpitgangwar-0.1" target="_blank">youtube.com/@arpitgangwar-0.1</a>
                 </div>
+                
             </div>
         </div>
     </section>
