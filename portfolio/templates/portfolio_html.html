@@ -39,10 +39,9 @@
                     <a href="#contact" class="btn-secondary">Get In Touch</a>
                 </div>
                 <div class="social-links">
-                    <a href={{github_url}} target="_blank"><i class="fab fa-github"></i></a>
-                    <a href={{linkedin_url}} target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href={{youtube_url}} target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="mailto:"{{ email }}><i class="fas fa-envelope"></i></a>
+                    {% for value in social_links %}
+                        <a href={{ value.link }} target="_blank"><i class="{{ value.icon_class }}"></i></a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="hero-image">
@@ -180,10 +179,10 @@
             <h3>Ready to collaborate?</h3>
             <p>Feel free to reach out for collaborations, projects, or just a friendly chat about technology.</p>
             <div class="contact-links">
-                {% for value in contact %}
+                {% for value in social_links %}
                     <div class="contact-item">
-                        <i class="{{value.icon}}"></i>
-                        <a href={{value.link}} target="_blank">{{value.name}}</a>
+                        <i class="{{value.icon_class}}"></i>
+                        <a href={{value.link}} target="_blank">{{value.link_with_username}}</a>
                     </div>
                 {% endfor %}
             </div>

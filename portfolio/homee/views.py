@@ -24,18 +24,8 @@ def home(request):
     certificate_data = Certificates.objects.all()
     data['certifications'] = certificate_data
 
-
-    # Social media and contact links
-    email= "arpit.gangwar061@gmail.com"
-    github= "MakeWithArpit"
-    linkedin= "arpit-gangwar"
-    youtube= "arpitgangwar-0.1"
-    data['github_url'] = "https://github.com/" + github
-    data['linkedin_url'] = "https://www.linkedin.com/in/" + linkedin
-    data['youtube_url'] = "https://www.youtube.com/@" + youtube
-    data['email'] = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email
-
-    # Number of projects, Certifications, and started years
+    social_links_data = social_links.objects.all()
+    data['social_links'] = social_links_data
     
     workk = work.objects.get(id=1)
     number_of_projects = int(workk.number_of_projects)
@@ -175,12 +165,5 @@ def home(request):
         },
     ]
 
-    # Contacet information
-    data['contact'] = [
-        {"name" :email, "link": data['email'], "icon":"fas fa-envelope"},
-        {"name" :"github.com/MakeWithArpit", "link": data['github_url'], "icon": "fab fa-github"},
-        {"name" :"linkedin.com/in/arpit-gangwar", "link": data['linkedin_url'], "icon":"fab fa-linkedin"},
-        {"name" :"youtube.com/@arpitgangwar-0.1", "link": data['youtube_url'], "icon":"fab fa-youtube"},
-    ]
 
     return render(request, "portfolio_html.html", data)

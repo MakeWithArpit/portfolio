@@ -45,6 +45,25 @@ class CertificatesAdminForm(forms.ModelForm):
             }),
         }
 
+class social_linksAdminForm(forms.ModelForm):
+    class Meta:
+        model = social_links
+        fields = "__all__"
+        widgets = {
+            'platform_name': forms.TextInput(attrs={
+                'placeholder': 'Enter the name of the social media platform (e.g., GitHub)'
+            }),
+            'link': forms.URLInput(attrs={
+                'placeholder': 'Enter the full URL to your profile.'
+            }),
+            'link_with_username': forms.TextInput(attrs={
+                'placeholder': 'Enter the link with your username (e.g., github.com/MakeWithArpit)'
+            }),
+            'icon_class': forms.TextInput(attrs={
+                'placeholder': 'Enter the CSS class for the platform icon (e.g., fab fa-github)'
+            }),
+        }
+
 class workAdminForm(forms.ModelForm):
     class Meta:
         model = work
@@ -71,6 +90,11 @@ class descriptionAdmin(admin.ModelAdmin):
     
     list_display = ('page_title',  'profile_photo', 'short_description', 'long_Para1', 'long_Para2', 'long_Para3' )
 
+@register(social_links)
+class social_linksAdmin(admin.ModelAdmin):
+    form = social_linksAdminForm
+    list_display = ('platform_name', 'link', 'link_with_username', 'icon_class')
+    
 @register(work)
 class workAdmin(admin.ModelAdmin):
     def has_add_permission(self, request): # desable adding more than one entry or delete add button
