@@ -1,18 +1,26 @@
 from django.shortcuts import render,redirect
+from homee.models import *
 from django.http import HttpResponse
 
 data = {} 
 
 def home(request):
-    # Page title
-    data['title'] = "Arpit Gangwar - Portfolio"
+    descriptionData = description.objects.all()
+    for desc in descriptionData:
+        # Page title
+        data['title'] = desc.page_title
 
-    # Profile photo
-    data['profile_image'] = "static/photo.jpg"
-    
-    # Short description for hero section
-    data['short_description'] = """Tech enthusiast building practical solutions with IoT, Python, and Django. Transforming ideas into real-world applications."""
-    
+        # Profile photo
+        data['profile_image'] = desc.profile_photo.url
+        
+        # Short description for hero section
+        data['short_description'] = desc.short_description
+        
+        # Long description split into paragraphs
+        data['para1'] = desc.long_Para1
+        data['para2'] = desc.long_Para2
+        data['para3'] = desc.long_Para3 
+
     # Social media and contact links
     email= "arpit.gangwar061@gmail.com"
     github= "MakeWithArpit"
@@ -22,11 +30,6 @@ def home(request):
     data['linkedin_url'] = "https://www.linkedin.com/in/" + linkedin
     data['youtube_url'] = "https://www.youtube.com/@" + youtube
     data['email'] = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email
-
-    # Long description split into paragraphs
-    data['para1'] = "Hello! I'm Arpit Gangwar, a tech enthusiast and student who loves learning by building. I have hands-on experience in C, Python, Django, and IoT projects using ESP32 and ESP8266 microcontrollers."
-    data['para2'] = "My focus is on creating practical, real-life solutions like automation systems, monitoring dashboards, and web-based tools. I believe in the power of technology to solve everyday problems and improve lives."
-    data['para3'] = "Currently pursuing B.Tech in Computer Science and Engineering at Invertis University, I'm working on improving my backend development skills with Django and exploring how hardware and software can work together to solve real problems."
 
     # Number of projects, Certifications, and started years
     number_of_projects = 5
