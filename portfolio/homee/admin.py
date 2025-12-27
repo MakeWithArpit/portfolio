@@ -80,6 +80,32 @@ class workAdminForm(forms.ModelForm):
             })
         }
 
+class qualificationsAdminForm(forms.ModelForm):
+    class Meta:
+        model = qualifications
+        fields = "__all__"
+        labels = {
+            'degree': 'Degree',
+            'institution': 'Institution',
+            'year': 'Year of Completion',
+            'branch': 'Branch / Field of Study',
+        }
+        widgets = {
+            'degree': forms.TextInput(attrs={
+                'placeholder': 'Enter degree name'
+            }),
+            'institution': forms.TextInput(attrs={
+                'placeholder': 'Enter institution name'
+            }),
+            'year': forms.TextInput(attrs={
+                'placeholder': 'Enter year of completion'
+            }),
+            'branch': forms.TextInput(attrs={
+                'placeholder': 'Enter branch/field of study'
+            }),
+        }
+
+
 @register(description)
 class descriptionAdmin(admin.ModelAdmin):
     form = descriptionAdminForm
@@ -94,7 +120,7 @@ class descriptionAdmin(admin.ModelAdmin):
 class social_linksAdmin(admin.ModelAdmin):
     form = social_linksAdminForm
     list_display = ('platform_name', 'link', 'link_with_username', 'icon_class')
-    
+
 @register(work)
 class workAdmin(admin.ModelAdmin):
     def has_add_permission(self, request): # desable adding more than one entry or delete add button
@@ -103,6 +129,11 @@ class workAdmin(admin.ModelAdmin):
         return True  
     form = workAdminForm
     list_display = ('number_of_projects', 'number_of_certifications', 'started_year')
+
+@register(qualifications)
+class qualificationsAdmin(admin.ModelAdmin):
+    form = qualificationsAdminForm
+    list_display = ('degree', 'institution', 'year', 'branch') 
 
 @register(Certificates)
 class CertificatesAdmin(admin.ModelAdmin):

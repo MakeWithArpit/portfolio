@@ -26,6 +26,9 @@ def home(request):
 
     social_links_data = social_links.objects.all()
     data['social_links'] = social_links_data
+
+    qualifications_data = qualifications.objects.all()
+    data["qualifications"] = qualifications_data
     
     workk = work.objects.get(id=1)
     number_of_projects = int(workk.number_of_projects)
@@ -68,14 +71,6 @@ def home(request):
         {"name": "IoT Systems", "icon": "fas fa-network-wired"},
         {"name": "Data Analysis", "icon": "fas fa-database"},
         {"name": "Git/GitHub", "icon": "fab fa-git-alt"}
-    ]
-
-    # Academic qualifications
-    data["qualifications"] = [
-        {"Degree": "Bachelor of Technology", 
-         "Institution": "Invertis University, Bareilly", 
-         "Year": "2022 - 2028", 
-         "Branch": "Computer Science and Engineering (CSE)"},
     ]
 
     # Projects list
