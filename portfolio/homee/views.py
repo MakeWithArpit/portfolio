@@ -24,6 +24,7 @@ def home(request):
     certificate_data = Certificates.objects.all()
     data['certifications'] = certificate_data
 
+
     # Social media and contact links
     email= "arpit.gangwar061@gmail.com"
     github= "MakeWithArpit"
@@ -35,31 +36,36 @@ def home(request):
     data['email'] = "https://mail.google.com/mail/?view=cm&fs=1&to=" + email
 
     # Number of projects, Certifications, and started years
-    number_of_projects = 5
-    number_of_certifications = 3
-    starting_year = 2024
+    
+    workk = work.objects.get(id=1)
+    number_of_projects = int(workk.number_of_projects)
+    number_of_certifications = int(workk.number_of_certifications)
+    starting_year = int(workk.started_year)
 
-    if number_of_projects >= 5 and number_of_certifications <= 9:
-        data['number_of_projects'] = "5+"
-    elif number_of_projects >= 10 and number_of_certifications <= 14:
-        data['number_of_projects'] = "10+"
-    elif number_of_projects >= 15 and number_of_certifications <= 19:
-        data['number_of_projects'] = "15+"
-    elif number_of_projects >= 20 and number_of_certifications <= 24:
-        data['number_of_projects'] = "20+"
-    else:
-        data['number_of_projects'] = str(number_of_projects)
+    def format_count(value, ranges):
+        for min_val, max_val, label in ranges:
+            if min_val <= value <= max_val:
+                return label
+        return str(value)
 
-    if number_of_certifications >= 3 and number_of_certifications <= 4:
-        data['number_of_certifications'] = "3+"
-    elif number_of_certifications >= 5 and number_of_certifications <= 7:
-        data['number_of_certifications'] = "5+"
-    elif number_of_certifications >= 8 and number_of_certifications <= 10:
-        data['number_of_certifications'] = "8+"
-    else:
-        data['number_of_certifications'] = str(number_of_certifications)
+    project_ranges = [
+        (5, 9, "5+"),
+        (10, 14, "10+"),
+        (15, 19, "15+"),
+        (20, 24, "20+"),
+    ]
 
+    cert_ranges = [
+        (3, 4, "3+"),
+        (5, 7, "5+"),
+        (8, 10, "8+"),  
+    ]
+
+    data['number_of_projects'] = format_count(number_of_projects, project_ranges)
+    data['number_of_certifications'] = format_count(number_of_certifications, cert_ranges)
     data['starting_year'] = str(starting_year)
+
+
 
     # Skills list
     data["skills"] = [
@@ -168,30 +174,6 @@ def home(request):
             ]
         },
     ]
-
-    # Certifications list
-    # data["certifications"] = [
-    #     {"cert_title": "Virtual Internship on Industrial Automation",
-    #      "cert_image": "static/Certificate_1.jpg",
-    #      "issued_by": "AICTE-EduSkills",
-    #      "issue_date": "December 2025",
-    #     },
-    #     {"cert_title": "Python for Data Science, AI & Development",
-    #      "cert_image": "static/Certificate_2.jpg",
-    #      "issued_by": "IBM",
-    #      "issue_date": "April 2025",
-    #     },
-    #     {"cert_title": "Crash Course on Python",
-    #      "cert_image": "static/Certificate_3.jpg",
-    #      "issued_by": "Google",
-    #      "issue_date": "February 2025",
-    #     },
-    #     {"cert_title": "Course on Computer Concepts",
-    #      "cert_image": "static/Certificate_4.jpg",
-    #      "issued_by": "NIELIT",
-    #      "issue_date": "December 2020",
-    #     },
-    # ]
 
     # Contacet information
     data['contact'] = [
