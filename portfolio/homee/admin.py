@@ -7,6 +7,13 @@ class descriptionAdminForm(forms.ModelForm):
     class Meta:
         model = description
         fields = "__all__"
+        labels = {
+            'page_title': 'Page Title',
+            'short_description': 'Short Description',
+            'long_Para1': 'Long Description Paragraph 1',
+            'long_Para2': 'Long Description Paragraph 2',
+            'long_Para3': 'Long Description Paragraph 3',
+        }
         widgets = {
             'page_title': forms.TextInput(attrs={
                 'placeholder': 'Enter page title'
@@ -33,6 +40,11 @@ class CertificatesAdminForm(forms.ModelForm):
     class Meta:
         model = Certificates
         fields = "__all__"
+        labels = {
+            'cert_title': 'Certificate Title',
+            'issued_by': 'Issued By',
+            'issue_date': 'Issue Date',
+        }
         widgets = {
             'cert_title': forms.TextInput(attrs={
                 'placeholder': 'Enter certificate title'
@@ -49,6 +61,12 @@ class social_linksAdminForm(forms.ModelForm):
     class Meta:
         model = social_links
         fields = "__all__"
+        labels = {
+            'platform_name': 'Platform Name',
+            'link': 'Profile Link',
+            'link_with_username': 'Link with Username',
+            'icon_class': 'Icon CSS Class',
+        }
         widgets = {
             'platform_name': forms.TextInput(attrs={
                 'placeholder': 'Enter the name of the social media platform (e.g., GitHub)'
@@ -68,6 +86,11 @@ class workAdminForm(forms.ModelForm):
     class Meta:
         model = work
         fields = "__all__"
+        labels = {
+            'number_of_projects': 'Number of Projects',
+            'number_of_certifications': 'Number of Certifications',
+            'started_year': 'Started Year',
+        }
         widgets = {
             'number_of_projects': forms.NumberInput(attrs={
                 'placeholder': 'Enter total number of projects'
@@ -105,6 +128,22 @@ class qualificationsAdminForm(forms.ModelForm):
             }),
         }
 
+class skillsAdminForm(forms.ModelForm):
+    class Meta:
+        model = skills
+        fields = "__all__"
+        labels = {
+            'skill_name': 'Skill Name',
+            'icon_class': 'Icon CSS Class',
+        }
+        widgets = {
+            'skill_name': forms.TextInput(attrs={
+                'placeholder': 'Enter skill name'
+            }),
+            'icon_class': forms.TextInput(attrs={
+                'placeholder': 'Enter the CSS class for the skill icon (e.g., fab fa-python)'
+            }),
+        }
 
 @register(description)
 class descriptionAdmin(admin.ModelAdmin):
@@ -134,6 +173,11 @@ class workAdmin(admin.ModelAdmin):
 class qualificationsAdmin(admin.ModelAdmin):
     form = qualificationsAdminForm
     list_display = ('degree', 'institution', 'year', 'branch') 
+
+@register(skills)
+class skillsAdmin(admin.ModelAdmin):
+    form = skillsAdminForm
+    list_display = ('skill_name', 'icon_class')
 
 @register(Certificates)
 class CertificatesAdmin(admin.ModelAdmin):

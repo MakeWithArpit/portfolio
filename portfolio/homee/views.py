@@ -29,6 +29,9 @@ def home(request):
 
     qualifications_data = qualifications.objects.all()
     data["qualifications"] = qualifications_data
+
+    skill_data = skills.objects.all()
+    data["skills"] = skill_data
     
     workk = work.objects.get(id=1)
     number_of_projects = int(workk.number_of_projects)
@@ -57,21 +60,6 @@ def home(request):
     data['number_of_projects'] = format_count(number_of_projects, project_ranges)
     data['number_of_certifications'] = format_count(number_of_certifications, cert_ranges)
     data['starting_year'] = str(starting_year)
-
-
-
-    # Skills list
-    data["skills"] = [
-        {"name": "Python", "icon": "fab fa-python"},
-        {"name": "C Language", "icon": "fas fa-code"},
-        {"name": "Django", "icon": "fas fa-server"},
-        {"name": "ESP32/ESP8266", "icon": "fas fa-microchip"},
-        {"name": "HTML/CSS", "icon": "fab fa-html5"},
-        {"name": "JavaScript", "icon": "fab fa-js"},
-        {"name": "IoT Systems", "icon": "fas fa-network-wired"},
-        {"name": "Data Analysis", "icon": "fas fa-database"},
-        {"name": "Git/GitHub", "icon": "fab fa-git-alt"}
-    ]
 
     # Projects list
     data["projects"] = [
