@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src= {{profile_image}} alt="Arpit Gangwar" class="profile-img">
+                <img src= "{{profile_image}}" alt="Arpit Gangwar" class="profile-img">
             </div>
         </div>
     </section>
@@ -151,9 +151,9 @@
         
         <div class="certificates-grid">
             {% for value in certifications %}
-                <div class="cert-card" onclick="openModal('{{value.cert_image}}')">
+                <div class="cert-card" onclick="openModal('{{value.cert_image.url}}')">
                     <div class="cert-image-wrapper">
-                        <img src="{{value.cert_image}}" alt="{{value.issued_by}}" class="cert-image">
+                        <img src= "{{value.cert_image.url}}" alt="{{value.issued_by}}" class="cert-image">
                     </div>
                     <div class="cert-content">
                         <h3>{{value.cert_title}}</h3>

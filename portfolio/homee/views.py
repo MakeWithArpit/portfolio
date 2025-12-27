@@ -5,8 +5,8 @@ from django.http import HttpResponse
 data = {} 
 
 def home(request):
-    descriptionData = description.objects.all()
-    for desc in descriptionData:
+    description_Data = description.objects.all()
+    for desc in description_Data:
         # Page title
         data['title'] = desc.page_title
 
@@ -20,6 +20,9 @@ def home(request):
         data['para1'] = desc.long_Para1
         data['para2'] = desc.long_Para2
         data['para3'] = desc.long_Para3 
+
+    certificate_data = Certificates.objects.all()
+    data['certifications'] = certificate_data
 
     # Social media and contact links
     email= "arpit.gangwar061@gmail.com"
@@ -167,28 +170,28 @@ def home(request):
     ]
 
     # Certifications list
-    data["certifications"] = [
-        {"cert_title": "Virtual Internship on Industrial Automation",
-         "cert_image": "static/Certificate_1.jpg",
-         "issued_by": "AICTE-EduSkills",
-         "issue_date": "December 2025",
-        },
-        {"cert_title": "Python for Data Science, AI & Development",
-         "cert_image": "static/Certificate_2.jpg",
-         "issued_by": "IBM",
-         "issue_date": "April 2025",
-        },
-        {"cert_title": "Crash Course on Python",
-         "cert_image": "static/Certificate_3.jpg",
-         "issued_by": "Google",
-         "issue_date": "February 2025",
-        },
-        {"cert_title": "Course on Computer Concepts",
-         "cert_image": "static/Certificate_4.jpg",
-         "issued_by": "NIELIT",
-         "issue_date": "December 2020",
-        },
-    ]
+    # data["certifications"] = [
+    #     {"cert_title": "Virtual Internship on Industrial Automation",
+    #      "cert_image": "static/Certificate_1.jpg",
+    #      "issued_by": "AICTE-EduSkills",
+    #      "issue_date": "December 2025",
+    #     },
+    #     {"cert_title": "Python for Data Science, AI & Development",
+    #      "cert_image": "static/Certificate_2.jpg",
+    #      "issued_by": "IBM",
+    #      "issue_date": "April 2025",
+    #     },
+    #     {"cert_title": "Crash Course on Python",
+    #      "cert_image": "static/Certificate_3.jpg",
+    #      "issued_by": "Google",
+    #      "issue_date": "February 2025",
+    #     },
+    #     {"cert_title": "Course on Computer Concepts",
+    #      "cert_image": "static/Certificate_4.jpg",
+    #      "issued_by": "NIELIT",
+    #      "issue_date": "December 2020",
+    #     },
+    # ]
 
     # Contacet information
     data['contact'] = [

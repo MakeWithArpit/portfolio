@@ -3,10 +3,10 @@ from django.db import models
 class description(models.Model):
     page_title = models.CharField(max_length=200)
     profile_photo = models.ImageField(upload_to='profile_photo/')
-    short_description = models.TextField()
-    long_Para1 = models.TextField()
-    long_Para2 = models.TextField()
-    long_Para3 = models.TextField()
+    short_description = models.CharField(max_length=130)
+    long_Para1 = models.CharField(max_length=250)
+    long_Para2 = models.CharField(max_length=250)
+    long_Para3 = models.CharField(max_length=250)
 
 class social_links(models.Model):
     platform_name = models.CharField(max_length=100)

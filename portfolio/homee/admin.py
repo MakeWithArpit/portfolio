@@ -29,6 +29,22 @@ class descriptionAdminForm(forms.ModelForm):
             }),
         }
 
+class CertificatesAdminForm(forms.ModelForm):
+    class Meta:
+        model = Certificates
+        fields = "__all__"
+        widgets = {
+            'cert_title': forms.TextInput(attrs={
+                'placeholder': 'Enter certificate title'
+            }),
+            'issued_by': forms.TextInput(attrs={
+                'placeholder': 'Enter the name of the issuing organization'
+            }),
+            'issue_date': forms.TextInput(attrs={
+                'placeholder': 'Enter the issue date (e.g., April 2025)'
+            }),
+        }
+
 @register(description)
 class descriptionAdmin(admin.ModelAdmin):
     form = descriptionAdminForm
@@ -39,3 +55,7 @@ class descriptionAdmin(admin.ModelAdmin):
     
     list_display = ('page_title',  'profile_photo', 'short_description', 'long_Para1', 'long_Para2', 'long_Para3' )
 
+@register(Certificates)
+class CertificatesAdmin(admin.ModelAdmin):
+    form = CertificatesAdminForm
+    list_display = ('cert_title', 'issued_by', 'issue_date', 'cert_image')
