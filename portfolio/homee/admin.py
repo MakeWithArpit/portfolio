@@ -3,6 +3,32 @@ from django import forms
 from django.contrib.admin import register
 from homee.models import *
 
+class ProjectsAdminForm(forms.ModelForm):
+    class Meta:
+        model = Projects
+        fields = "__all__"
+        labels = {
+            'project_title': 'Project Title',
+            'short_description': 'Short Description',
+            'featured': 'Featured Project',
+            'technologies': 'Technologies Used',
+            'points': 'Key Points',
+        }
+        widgets = {
+            'project_title': forms.TextInput(attrs={
+                'placeholder': 'Enter project title'
+            }),
+            'short_description': forms.Textarea(attrs={
+                'placeholder': 'Enter short project description',
+            }),
+            'technologies': forms.Textarea(attrs={
+                'placeholder': 'e.g. Django, Python, MySQL',
+            }),
+            'points': forms.Textarea(attrs={
+                'placeholder': 'e.g. Login system, REST API, Admin panel',
+            }),
+        }
+
 class descriptionAdminForm(forms.ModelForm):
     class Meta:
         model = description
@@ -183,3 +209,8 @@ class skillsAdmin(admin.ModelAdmin):
 class CertificatesAdmin(admin.ModelAdmin):
     form = CertificatesAdminForm
     list_display = ('cert_title', 'issued_by', 'issue_date', 'cert_image')
+
+@register(Projects)
+class ProjectsAdmin(admin.ModelAdmin):
+    form = ProjectsAdminForm
+    list_display = ('project_title',)
