@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{title}} </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/portfolio_css.css">
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Arpit<span>.</span></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span class="highlight">Arpit Gangwar</span></h1>
+                <p> {{short_description}} </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn-primary">View Projects</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+                <div class="social-links">
+                    {% for value in social_links %}
+                        <a href={{ value.link }} target="_blank"><i class="{{ value.icon_class }}"></i></a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src= "{{profile_image}}" alt="Arpit Gangwar" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="about">
+        <div class="section-header">
+            <div class="section-tag">About Me</div>
+            <h2 class="section-title">Who I Am</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>{{para1}}</p>
+                <p>{{para2}}</p>
+                <p>{{para3}}</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{{number_of_projects}}</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{number_of_certifications}}</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{starting_year}}</div>
+                    <div class="stat-label">Started Journey</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="skills">
+        <div class="section-header">
+            <div class="section-tag">Technical Skills</div>
+            <h2 class="section-title">What I Work With</h2>
+        </div>
+        <div class="skills-grid">
+
+            {% for k in skills%}
+                <div class="skill-card">
+                    <i class= "{{k.icon_class}}"></i>
+                    <h3>{{k.skill_name}}</h3>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="container" id="education">
+        <div class="section-header">
+            <div class="section-tag">Education</div>
+            <h2 class="section-title">Academic Background</h2>
+        </div>
+        {% for qual in qualifications %}
+
+            <div class="education-card">
+                <h3>{{qual.degree}}</h3>
+                <p class="university">{{qual.institution}}</p>
+                <p>{{qual.branch}}</p>
+                <p class="duration">{{qual.year}}</p>
+            </div>
+
+        {% endfor %}
+        
+    </section>
+
+    <section class="container" id="projects">
+        <div class="section-header">
+            <div class="section-tag">Portfolio</div>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            {% for value in projects %}
+            
+                <div class="project-card">
+
+                    <div class="project-header">
+                        <div><h3>{{value.project_title}}</h3></div>
+                        {% if value.featured %}<span class="project-badge">Featured</span>{% endif %}
+                    </div>
+
+                    <div class="tech-tags">
+                        {% for tech in value.technologies_list %}<span class="tech-tag">{{tech}}</span>{% endfor %}
+                    </div>
+
+                    <p class="project-description">{{value.short_description}}</p>
+                
+                    <ul class="project-features">
+                        {% for point in value.points_list %}<li>{{point}}</li>{% endfor %}
+                    </ul>
+
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="container" id="certificates">
+        <div class="section-header">
+            <div class="section-tag">Achievements</div>
+            <h2 class="section-title">Certifications</h2>
+        </div>
+        
+        <div class="certificates-grid">
+            {% for value in certifications %}
+                <div class="cert-card" onclick="openModal('{{value.cert_image.url}}')">
+                    <div class="cert-image-wrapper">
+                        <img src= "{{value.cert_image.url}}" alt="{{value.issued_by}}" class="cert-image">
+                    </div>
+                    <div class="cert-content">
+                        <h3>{{value.cert_title}}</h3>
+                        <p class="cert-issuer">{{value.issued_by}}</p>
+                        <p class="cert-date">{{value.issue_date}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div id="certModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <section class="container" id="contact">
+        <div class="section-header">
+            <div class="section-tag">Get In Touch</div>
+            <h2 class="section-title">Let's Connect</h2>
+        </div>
+
+        <div class="contact-content">
+            <h3>Ready to collaborate?</h3>
+            <p>Feel free to reach out for collaborations, projects, or just a friendly chat about technology.</p>
+            <div class="contact-links">
+                {% for value in social_links %}
+                    <div class="contact-item">
+                        <i class="{{value.icon_class}}"></i>
+                        <a href={{value.link}} target="_blank">{{value.link_with_username}}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Arpit Gangwar. Crafted with passion and code.</p>
+    </footer>
+
+    <script src="static/portfolio_js.js"></script>
+</body>
+</html>
