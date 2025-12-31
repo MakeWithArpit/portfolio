@@ -84,9 +84,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portfolio',    
+        'NAME': 'portfolio_db',    
         'USER': 'root',
-        'PASSWORD': 'UP25-9904399501',
+        'PASSWORD': 'StrongPassword',
         'HOST': 'localhost',
         'PORT': '3306',
     }
